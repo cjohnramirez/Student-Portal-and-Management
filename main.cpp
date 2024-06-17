@@ -1,31 +1,47 @@
 #include <iostream>
 #include "login.cpp"
+#include "student.cpp"
 using namespace std;
 
 int main()
 {
     Login user;
-    cout << "Welcome!" << endl;
     string username, password;
 
-    //check if account exists
+    // loop feature of program
     bool checkCredentials = true;
-    while (checkCredentials)
+    bool logout = false;
+    string check;
+
+    while (checkCredentials || logout)
     {
+        cout << "Welcome!" << endl;
+        
         cout << "Username: ";
         cin >> username;
-        
         cout << "Password: ";
         cin >> password;
 
-        string check = user.checkCredentials(username, password);
+        check = user.checkCredentials(username, password);
         cout << check << endl;
-
-        if (check == "Login successful") checkCredentials = false;
+        if (check == "Login successful")
+        {
+            checkCredentials = false;
+            system("cls");
+        }
         else checkCredentials = true;
-    }
 
-    //shifts account to appropriate classes
-    
+        int accountType = user.getAccountType();
+
+        // shifts account to appropriate classes and loops back to start of while block if logout key is entered  
+        if (accountType == 1 && !checkCredentials) // student
+        {
+            Student studentUser(username);
+            studentUser.studentMenu();
+
+            logout = studentUser.logout();
+        }
+    }
+        
     return 0;
 }
