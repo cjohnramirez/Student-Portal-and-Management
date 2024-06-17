@@ -1,9 +1,8 @@
 ### Student Portal and Management
-<<<<<<< HEAD
 A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Science
 
-## Features
+## Features 
 
 ## Updates
-=======
->>>>>>> bec41cd40c3ae1200e607cfe5817e3f12afde515
+(Beta 2.1)
+- Adds back button and logout features
