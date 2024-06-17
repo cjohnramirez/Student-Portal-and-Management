@@ -8,9 +8,12 @@ using std::string;
 class Login
 {
 public:
+    int startMenu(); //ofc a start menu, duhhh
     string checkCredentials(const string& userName, const string& password); //reads input and searches file
     int getAccountType() const; //returns account type
+    int logout();
 private:
+    bool loop;
     int accountType;
 };
 

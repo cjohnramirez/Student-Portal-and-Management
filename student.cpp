@@ -5,6 +5,7 @@ using std::cout, std::cin, std::endl;
 Student::Student(const string& name)
 {
     this->name = name;
+    this->isTrue = false;
 }
 
 void Student::studentMenu()
@@ -25,32 +26,52 @@ void Student::studentMenu()
 
         if (choice == 1 || choice == 2 || choice == 3)
         {
-            if (choice == 1)
-                viewCOR();
-            else if (choice == 2)
-                viewGrade();
-            else if (choice == 3)
-                logout();
+            if (choice == 1){
+                if (viewCOR() == 0) continue;
+            }
+            else if (choice == 2){
+                if (viewGrade() == 0) continue;
+            }
+            else if (choice == 3){
+                this->isTrue = true; break;
+            }
 
-            runChoice = false;
         } else {
             cout << "Invalid choice, try again" << endl;
         }
     }
 }
 
-void Student::viewCOR()
+int Student::viewCOR()
 {
-
+    cout << "COR" << endl;
+    returnButton();
+    if (choice == 0) return 0;
+    
+    return 1;
 }
 
-void Student::viewGrade()
+int Student::viewGrade()
 {
+    cout << "Grades" << endl;
+    returnButton();
+    if (choice == 0) return 0;
 
+    return 1;
+}
+
+int Student::returnButton(){
+    cout << "[0] Back" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    system("cls");
+    return 1;
 }
 
 bool Student::logout()
 {
     system("cls");
-    return true;
+    return isTrue;
 }
+

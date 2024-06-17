@@ -1,10 +1,10 @@
 #include <iostream>
+#include <windows.h>
 #include "login.cpp"
 #include "student.cpp"
 using namespace std;
 
-int main()
-{
+int main() {
     Login user;
     string username, password;
 
@@ -13,10 +13,10 @@ int main()
     bool logout = false;
     string check;
 
-    while (checkCredentials || logout)
-    {
-        cout << "Welcome!" << endl;
-        
+    while (checkCredentials || logout) {
+        if (user.startMenu() == 1)
+            return(0);
+    
         cout << "Username: ";
         cin >> username;
         cout << "Password: ";
@@ -24,24 +24,22 @@ int main()
 
         check = user.checkCredentials(username, password);
         cout << check << endl;
-        if (check == "Login successful")
-        {
-            checkCredentials = false;
-            system("cls");
+        if (check == "Login successful!") {
+            checkCredentials = false; 
+            Sleep(750); system("cls");
         }
-        else checkCredentials = true;
-
+        else {
+            checkCredentials = true; 
+            Sleep(750); system("cls");
+        }
+        
         int accountType = user.getAccountType();
-
-        // shifts account to appropriate classes and loops back to start of while block if logout key is entered  
-        if (accountType == 1 && !checkCredentials) // student
-        {
-            Student studentUser(username);
+        if (accountType == 1 && !checkCredentials){
+            Student studentUser(username); 
             studentUser.studentMenu();
-
             logout = studentUser.logout();
         }
     }
-        
+    
     return 0;
 }
