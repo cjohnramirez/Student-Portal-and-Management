@@ -1,8 +1,13 @@
 #include <iostream>
 #include <windows.h>
+#include "utils.cpp"
 #include "login.cpp"
 #include "student.cpp"
 using namespace std;
+
+//errors need to be fixed: wrong file search and some loop malfunctions
+
+Utils utils1;
 
 int main() {
     Login user;
@@ -24,20 +29,22 @@ int main() {
 
         check = user.checkCredentials(username, password);
         cout << check << endl;
+
         if (check == "Login successful!") {
             checkCredentials = false; 
-            Sleep(750); system("cls");
+            utils1.delayAnimation();
         }
+
         else {
             checkCredentials = true; 
-            Sleep(750); system("cls");
+            utils1.delayAnimation();
         }
         
         int accountType = user.getAccountType();
         if (accountType == 1 && !checkCredentials){
             Student studentUser(username); 
-            studentUser.studentMenu();
-            logout = studentUser.logout();
+            bool loop = studentUser.studentMenu();
+            if (loop) break;
         }
     }
     

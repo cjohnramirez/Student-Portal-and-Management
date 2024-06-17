@@ -8,14 +8,13 @@ class Student
 {
 public:
     Student(const string& name);
-    void studentMenu(); //finished
+    int studentMenu(); //finished
     int viewCOR();
     int viewGrade();
-    bool logout();
+    bool logout(bool isTrue);
     int returnButton();
 private:
     string name;
-    bool isTrue;
     int choice;
 };
 
