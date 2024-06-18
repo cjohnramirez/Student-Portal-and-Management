@@ -11,7 +11,7 @@ Student::Student(const string& name) //constructor
     this->name = name;
 }
 
-int Student::studentMenu() //main menu of student class
+bool Student::studentMenu() //main menu of student class
 {
     utils2.delayAnimation();
 
@@ -30,13 +30,17 @@ int Student::studentMenu() //main menu of student class
         if (choice == 1 || choice == 2 || choice == 3)
         {   
             if (choice == 1){
-                if (viewCOR() == 0) continue;
+                utils2.delayAnimation();
+                if (viewCOR() == 0) 
+                continue;
             }
             else if (choice == 2){
+                utils2.delayAnimation();
                 if (viewGrade() == 0) continue;
             }
             else if (choice == 3){
-                utils2.logout(0); break;
+                utils2.logout();
+                return true;
             }
 
         } else {
@@ -44,7 +48,7 @@ int Student::studentMenu() //main menu of student class
         }
     }
 
-    return 0;
+    return false;
 }
 
 int Student::viewCOR() //sub-menu, views COR in a file

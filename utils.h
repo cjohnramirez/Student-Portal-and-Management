@@ -7,7 +7,7 @@ class Utils
 {
 public:
     int returnButton(int choice);
-    bool logout(bool isTrue);
+    void logout();
     void delayAnimation();
 };
 

@@ -1,6 +1,9 @@
 #include "login.h"
 #include "utils.h"
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
 using std::cout, std::endl, std::cin;
 
 Utils utils3;
@@ -34,27 +37,38 @@ int Login::startMenu() //main menu of program
     return 0;     
 }
 
-string Login::checkCredentials(const string& userName, const string& userPassword) { //check if account exists
-    string line;
+string Login::checkCredentials(const string& username, const string& userpassword) { 
+    std::fstream credentials;
+    credentials.open("credentials.csv", std::ios::in);
 
-    std::ifstream credentials;
-    credentials.open("credentials.txt");
+    bool isFound = false;
+    std::vector<string> row;
+    string line, word, temp;
 
-    while (getline(credentials, line)){
-        size_t pos = line.find(userName) - 1;
-        string accountType, name, password;
-        
-        while (credentials >> accountType >> name >> password) {
-            this->accountType = std::stoi(accountType);
-            if (name == userName && password == userPassword)
-                return "Login successful!";
-            else if (name != userName || password != userPassword)
-                return "Wrong credentials, please try again";
-            }
+    string accountType;
+
+    while (getline(credentials, line) && !credentials.eof())
+    {
+        row.clear();
+        std::stringstream s(line);
+
+        while (getline(s, word, ',')){
+            row.push_back(word); 
         }
-    return 0;
+
+        if (row[1] == username && row[2] == userpassword){
+            this->accountType = row[0];
+            isFound = true;
+            break;
+        }
     }
 
-int Login::getAccountType() const { //check account type
+    if (isFound)
+        return "Login successful!";
+    else 
+        return "Invalid name or username. Please try again.";
+}
+
+string Login::getAccountType() const { //check account type
     return accountType;
 }

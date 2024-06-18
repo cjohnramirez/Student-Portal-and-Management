@@ -8,10 +8,9 @@ class Student
 {
 public:
     Student(const string& name);
-    int studentMenu(); //finished
+    bool studentMenu(); //finished
     int viewCOR();
     int viewGrade();
-    bool logout(bool isTrue);
     int returnButton();
 private:
     string name;

@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "login.h"
 #include <windows.h>
 #include <iostream>
 using std::cout, std::cin, std::endl;
@@ -12,15 +13,15 @@ int Utils::returnButton(int choice){ //button to return at student menu
     return 1;
 }
 
-bool Utils::logout(bool isTrue) //button to return at main menu
+void Utils::logout() //button to return at main menu
 {
     delayAnimation();
     cout << "Redirecting to login page..." << endl;
-    return isTrue;
+    delayAnimation();
 }
 
 void Utils::delayAnimation()
 {
-    Sleep(1350); 
+    Sleep(250);
     system("cls"); 
 }

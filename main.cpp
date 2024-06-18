@@ -5,7 +5,7 @@
 #include "student.cpp"
 using namespace std;
 
-//errors need to be fixed: wrong file search and some loop malfunctions
+//errors need to be fixed: some loop malfunctions
 
 Utils utils1;
 
@@ -15,10 +15,9 @@ int main() {
 
     // loop feature of program
     bool checkCredentials = true;
-    bool logout = false;
     string check;
 
-    while (checkCredentials || logout) {
+    while (checkCredentials) {
         if (user.startMenu() == 1)
             return(0);
     
@@ -40,11 +39,10 @@ int main() {
             utils1.delayAnimation();
         }
         
-        int accountType = user.getAccountType();
-        if (accountType == 1 && !checkCredentials){
+        string accountType = user.getAccountType();
+        if (accountType == "1" && !checkCredentials){
             Student studentUser(username); 
-            bool loop = studentUser.studentMenu();
-            if (loop) break;
+            checkCredentials = studentUser.studentMenu();
         }
     }
     
