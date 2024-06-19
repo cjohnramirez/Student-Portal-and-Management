@@ -2,11 +2,11 @@
 A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Science
 
 ## Features
-# Student
+### Student
 - Read Grades from Record
 
-# Admin
-# Teacher
+### Admin
+### Teacher
 
 ## Updates
 
