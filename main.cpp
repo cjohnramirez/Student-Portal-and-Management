@@ -40,9 +40,14 @@ int main() {
         }
         
         string accountType = user.getAccountType();
-        if (accountType == "1" && !checkCredentials){
+        if (accountType == "0" && !checkCredentials){
+            
+        }
+        else if (accountType == "1" && !checkCredentials){
             Student studentUser(username); 
             checkCredentials = studentUser.studentMenu();
+        } else if (accountType == "2") {
+
         }
     }
     

@@ -9,6 +9,7 @@ public:
     int returnButton(int choice);
     void logout();
     void delayAnimation();
+    void studentInfo(string username);
 };
 
 #endif

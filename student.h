@@ -11,7 +11,6 @@ public:
     bool studentMenu(); //finished
     int viewCOR();
     int viewGrade();
-    int returnButton();
 private:
     string name;
     int choice;

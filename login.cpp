@@ -38,16 +38,16 @@ int Login::startMenu() //main menu of program
 }
 
 string Login::checkCredentials(const string& username, const string& userpassword) { 
-    std::fstream credentials;
-    credentials.open("credentials.csv", std::ios::in);
+    std::fstream accounts;
+    accounts.open("accounts.csv", std::ios::in);
 
     bool isFound = false;
     std::vector<string> row;
-    string line, word, temp;
+    string line, word;
 
     string accountType;
 
-    while (getline(credentials, line) && !credentials.eof())
+    while (getline(accounts, line) && !accounts.eof())
     {
         row.clear();
         std::stringstream s(line);

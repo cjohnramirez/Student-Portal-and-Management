@@ -1,4 +1,0 @@
-angel, Angel Taglucop, CS1A 
-ComProg2, 3, 1.00, 1.00
-Algo1, 3, 1.00, 1.00
-#

@@ -54,6 +54,7 @@ bool Student::studentMenu() //main menu of student class
 int Student::viewCOR() //sub-menu, views COR in a file
 {
     cout << "COR" << endl;
+
     utils2.returnButton(choice);
     if (choice == 0) return 0;
     
@@ -63,6 +64,8 @@ int Student::viewCOR() //sub-menu, views COR in a file
 int Student::viewGrade() //sub-menu, views grade in a file
 {
     cout << "Grades" << endl;
+    utils2.studentInfo(name);
+
     utils2.returnButton(choice);
     if (choice == 0) return 0;
 
