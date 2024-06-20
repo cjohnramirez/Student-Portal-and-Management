@@ -1,14 +1,13 @@
 #include "student.h"
 #include "utils.h"
 #include <iostream>
-#include <windows.h>
 using std::cout, std::cin, std::endl;
 
-Utils utils2;
+Utils& utilsStudent = Utils::getInstance();
 
 bool Student::studentMenu() //main menu of student class
 {
-    utils2.delayAnimation();
+    utilsStudent.delayAnimation();
 
     int choice;
     bool runChoice = true;
@@ -22,24 +21,16 @@ bool Student::studentMenu() //main menu of student class
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1 || choice == 2 || choice == 3)
-        {   
-            if (choice == 1){
-                utils2.delayAnimation();
-                if (viewCOR() == 0) 
-                continue;
-            }
-            else if (choice == 2){
-                utils2.delayAnimation();
-                if (viewGrade() == 0) continue;
-            }
-            else if (choice == 3){
-                utils2.logout();
+        utilsStudent.delayAnimation();
+        switch(choice){
+            case 1: if (viewCOR() == 0) continue;
+                break;
+            case 2: if (viewGrade() == 0) continue;
+                break;
+            case 3: utilsStudent.logout(); 
                 return true;
-            }
-
-        } else {
-            cout << "Invalid choice, try again" << endl;
+            default:
+                cout << "Invalid choice, try again" << endl; continue;
         }
     }
 
@@ -50,7 +41,7 @@ int Student::viewCOR() //sub-menu, views COR in a file
 {
     cout << "COR" << endl;
 
-    utils2.returnButton(choice);
+    utilsStudent.returnButton(choice);
     if (choice == 0) return 0;
     
     return 1;
@@ -59,9 +50,9 @@ int Student::viewCOR() //sub-menu, views COR in a file
 int Student::viewGrade() //sub-menu, views grade in a file
 {
     cout << "Grades" << endl;
-    utils2.studentInfo(name);
+    utilsStudent.studentInfo(name);
 
-    utils2.returnButton(choice);
+    utilsStudent.returnButton(choice);
     if (choice == 0) return 0;
 
     return 1;

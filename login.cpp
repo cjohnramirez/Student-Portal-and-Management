@@ -6,7 +6,7 @@
 #include <sstream>
 using std::cout, std::endl, std::cin;
 
-Utils utils3;
+Utils& utilsLogin = Utils::getInstance();
 
 int Login::startMenu() //main menu of program
 {
@@ -20,7 +20,7 @@ int Login::startMenu() //main menu of program
         cin >> choice;     
 
         if (choice == 0) {
-            utils3.delayAnimation();
+            utilsLogin.delayAnimation();
             return 1;
         }
         else if (choice == 1)
@@ -29,7 +29,7 @@ int Login::startMenu() //main menu of program
         }
         else {
             cout << "Invalid input"; 
-            utils3.delayAnimation();
+            utilsLogin.delayAnimation();
             continue;
         }
     }

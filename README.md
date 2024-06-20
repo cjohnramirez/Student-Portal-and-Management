@@ -18,3 +18,8 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 
 (Beta 2.0)
 - Defined admin and teacher class, and their menus
+
+(Beta 2.1)
+- Applied Simpleton design in Utils class
+- Finished all classes
+- Reduced redundancy in major parts of the program

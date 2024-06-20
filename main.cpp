@@ -4,11 +4,15 @@
 #include "login.cpp"
 #include "student.cpp"
 #include "admin.cpp"
+#include "teacher.cpp"
 using namespace std;
 
-Utils utils1;
+Utils* Utils::instance = nullptr; //Singleton design class
 
+//main part of the program
 int main() {
+    Utils& utilsMain = Utils::getInstance();
+
     Login user;
     string username, password;
     bool checkCredentials = true;
@@ -30,18 +34,20 @@ int main() {
         else
             checkCredentials = true;
 
-        utils1.delayAnimation();
+        utilsMain.delayAnimation();
 
         string accountType = user.getAccountType();
-        if (accountType == "0" && !checkCredentials){
-            Admin adminUser(username);
-            checkCredentials = adminUser.adminMenu();
-        }
-        else if (accountType == "1" && !checkCredentials){
-            Student studentUser(username); 
-            checkCredentials = studentUser.studentMenu();
-        } else if (accountType == "2") {
-            
+        if (!checkCredentials){
+            if (accountType == "0"){
+                Admin adminUser(username);
+                checkCredentials = adminUser.adminMenu();
+            } else if (accountType == "1"){
+                Student studentUser(username); 
+                checkCredentials = studentUser.studentMenu();
+            } else if (accountType == "2") {
+                Teacher teacherUser(username);
+                checkCredentials = teacherUser.teacherMenu();
+            } 
         }
     }
     

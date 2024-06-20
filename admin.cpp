@@ -2,14 +2,13 @@
 #include "utils.h"
 #include "admin.h"
 #include <iostream>
-#include <windows.h>
 using std::cout, std::cin, std::endl;
 
-Utils utils4;
+Utils& utilsAdmin = Utils::getInstance();
 
 bool Admin::adminMenu()
 {
-    utils4.delayAnimation();
+    utilsAdmin.delayAnimation();
 
     int choice;
     bool runChoice = true;
@@ -23,24 +22,17 @@ bool Admin::adminMenu()
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1 || choice == 2 || choice == 3)
-        {   
-            if (choice == 1){
-                utils4.delayAnimation();
-                if (manageStudent() == 0) 
+        utilsAdmin.delayAnimation();
+        switch (choice)
+        {
+            case 1: if (manageStudent() == 0) 
                 continue;
-            }
-            else if (choice == 2){
-                utils4.delayAnimation();
-                if (manageTeacher() == 0) continue;
-            }
-            else if (choice == 3){
-                utils4.logout();
+            case 2: if (manageTeacher() == 0) 
+                continue;
+            case 3: utilsAdmin.logout();
                 return true;
-            }
-
-        } else {
-            cout << "Invalid choice, try again" << endl;
+            default:
+                cout << "Invalid choice, try again" << endl;
         }
     }
     
@@ -51,7 +43,7 @@ int Admin::manageStudent()
 {
     cout << "Manage Student" << endl;
 
-    utils4.returnButton(choice);
+    utilsAdmin.returnButton(choice);
     if (choice == 0) return 0;
 
     return 1;
@@ -61,7 +53,7 @@ int Admin::manageTeacher()
 {
     cout << "Manage Teacher" << endl;
 
-    utils4.returnButton(choice);
+    utilsAdmin.returnButton(choice);
     if (choice == 0) return 0;
     
     return 1;

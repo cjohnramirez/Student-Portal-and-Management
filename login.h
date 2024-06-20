@@ -12,7 +12,7 @@ public:
     string checkCredentials(const string& userName, const string& password);
     string getAccountType() const;
 private:
-    bool loop; //class encapsulation
+    bool loop; 
     string accountType;
 };
 
