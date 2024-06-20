@@ -1,16 +1,17 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 #include <string>
+#include "person.h"
 using std::string;
 
 //add admin features
-class Admin{
-    Admin (const string& name);
+class Admin : public Person {
+public:
+    Admin (const string& name) : Person(name) {}; 
     bool adminMenu();
     int manageStudent();
     int manageTeacher();
 private:
-    string name;
     int choice;
 };
 

@@ -3,19 +3,15 @@
 #include "utils.cpp"
 #include "login.cpp"
 #include "student.cpp"
+#include "admin.cpp"
 using namespace std;
-
-//errors need to be fixed: some loop malfunctions
 
 Utils utils1;
 
 int main() {
     Login user;
     string username, password;
-
-    // loop feature of program
     bool checkCredentials = true;
-    string check;
 
     while (checkCredentials) {
         if (user.startMenu() == 1)
@@ -26,28 +22,26 @@ int main() {
         cout << "Password: ";
         cin >> password;
 
-        check = user.checkCredentials(username, password);
+        string check = user.checkCredentials(username, password);
         cout << check << endl;
 
-        if (check == "Login successful!") {
+        if (check == "Login successful!") 
             checkCredentials = false; 
-            utils1.delayAnimation();
-        }
+        else
+            checkCredentials = true;
 
-        else {
-            checkCredentials = true; 
-            utils1.delayAnimation();
-        }
-        
+        utils1.delayAnimation();
+
         string accountType = user.getAccountType();
         if (accountType == "0" && !checkCredentials){
-            
+            Admin adminUser(username);
+            checkCredentials = adminUser.adminMenu();
         }
         else if (accountType == "1" && !checkCredentials){
             Student studentUser(username); 
             checkCredentials = studentUser.studentMenu();
         } else if (accountType == "2") {
-
+            
         }
     }
     

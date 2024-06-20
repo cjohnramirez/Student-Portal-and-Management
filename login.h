@@ -4,13 +4,13 @@
 #include <fstream>
 using std::string;
 
-//add login features here, then define feature in login.cpp
+//add login features here
 class Login
 {
 public:
-    int startMenu(); //ofc a start menu, duhhh
-    string checkCredentials(const string& userName, const string& password); //reads input and searches file
-    string getAccountType() const; //returns account type
+    int startMenu();
+    string checkCredentials(const string& userName, const string& password);
+    string getAccountType() const;
 private:
     bool loop; //class encapsulation
     string accountType;

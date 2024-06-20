@@ -6,11 +6,6 @@ using std::cout, std::cin, std::endl;
 
 Utils utils2;
 
-Student::Student(const string& name) //constructor
-{
-    this->name = name;
-}
-
 bool Student::studentMenu() //main menu of student class
 {
     utils2.delayAnimation();
