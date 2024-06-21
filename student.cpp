@@ -1,12 +1,15 @@
 #include "student.h"
 #include "utils.h"
+#include "login.h"
 #include <iostream>
 using std::cout, std::cin, std::endl;
 
 Utils& utilsStudent = Utils::getInstance();
+Login student;
 
-bool Student::studentMenu() //main menu of student class
+bool Student::studentMenu(string name) //main menu of student class
 {
+    this->name = name;
     utilsStudent.delayAnimation();
 
     int choice;

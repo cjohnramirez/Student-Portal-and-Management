@@ -58,6 +58,7 @@ string Login::checkCredentials(const string& username, const string& userpasswor
 
         if (row[1] == username && row[2] == userpassword){
             this->accountType = row[0];
+            this->name = row[3];
             isFound = true;
             break;
         }
@@ -67,6 +68,10 @@ string Login::checkCredentials(const string& username, const string& userpasswor
         return "Login successful!";
     else 
         return "Invalid name or username. Please try again.";
+}
+
+string Login::getName() const {
+    return name;
 }
 
 string Login::getAccountType() const { //check account type

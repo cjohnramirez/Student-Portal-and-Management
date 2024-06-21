@@ -7,6 +7,7 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 
 ### Admin
 ### Teacher
+- Read Grades from Subjects
 
 ## Updates
 
@@ -23,3 +24,8 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 - Applied Simpleton design in Utils class
 - Finished all classes
 - Reduced redundancy in major parts of the program
+
+(Beta 3.0)
+- Ability to see teacher's courses and sections, as well as individual grades
+- Major fixes in several classes
+- Added person class (implementation to be followed)

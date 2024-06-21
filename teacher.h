@@ -1,17 +1,17 @@
 #ifndef TEACHER_H
 #define TEACHER_H
 #include <string>
-#include "person.h"
 using std::string;
 
 //add teacher features
-class Teacher : public Person {
+class Teacher {
 public:
-    Teacher (const string& name) : Person(name) {};
-    bool teacherMenu();
+    bool teacherMenu(string name);
     int viewStudents();
+    int teacherCourses();
 private:
     int choice;
+    string name;
 };
 
 #endif

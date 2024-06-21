@@ -6,7 +6,7 @@ using std::cout, std::cin, std::endl;
 
 Utils& utilsAdmin = Utils::getInstance();
 
-bool Admin::adminMenu()
+bool Admin::adminMenu(string name)
 {
     utilsAdmin.delayAnimation();
 

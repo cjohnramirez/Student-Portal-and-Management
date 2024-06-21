@@ -37,16 +37,18 @@ int main() {
         utilsMain.delayAnimation();
 
         string accountType = user.getAccountType();
+        string name = user.getName();
+
         if (!checkCredentials){
             if (accountType == "0"){
-                Admin adminUser(username);
-                checkCredentials = adminUser.adminMenu();
+                Admin adminUser;
+                checkCredentials = adminUser.adminMenu(name);
             } else if (accountType == "1"){
-                Student studentUser(username); 
-                checkCredentials = studentUser.studentMenu();
+                Student studentUser; 
+                checkCredentials = studentUser.studentMenu(name);
             } else if (accountType == "2") {
-                Teacher teacherUser(username);
-                checkCredentials = teacherUser.teacherMenu();
+                Teacher teacherUser;
+                checkCredentials = teacherUser.teacherMenu(name);
             } 
         }
     }

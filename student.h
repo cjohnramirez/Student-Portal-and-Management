@@ -1,19 +1,18 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <string>
-#include "person.h"
 using std::string;
 
 //add student features
-class Student : public Person
+class Student
 {
 public:
-    Student(const string& name) : Person(name) {};
-    bool studentMenu(); //finished
+    bool studentMenu(string name); //finished
     int viewCOR();
     int viewGrade();
 private:
     int choice;
+    string name;
 };
 
 #endif

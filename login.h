@@ -10,10 +10,12 @@ class Login
 public:
     int startMenu();
     string checkCredentials(const string& userName, const string& password);
+    string getName() const;
     string getAccountType() const;
 private:
     bool loop; 
     string accountType;
+    string name;
 };
 
 #endif

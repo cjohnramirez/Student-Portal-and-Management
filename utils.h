@@ -18,6 +18,7 @@ public:
     void logout();
     void delayAnimation();
     void studentInfo(string username);
+    void studentsPerSection(string sectionName, string courseName, string teacherName);
 
     Utils(const Utils&) = delete;
     Utils& operator=(const Utils&) = delete;
@@ -25,6 +26,7 @@ private:
     Utils() {};
     ~Utils() {};
     static Utils* instance;
+    int choice;
 };
 
 #endif
