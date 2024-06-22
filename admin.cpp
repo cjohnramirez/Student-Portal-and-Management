@@ -41,7 +41,7 @@ bool Admin::adminMenu(string name)
 
 int Admin::manageStudent()
 {
-    cout << "Manage Student\n" << endl;
+    cout << "Manage Student" << endl;
     if (listSections() == 0) return 0;
 
     return 1;
@@ -157,6 +157,7 @@ int Admin::listCourses(string sectionName){
             if (userChoice > 0 && userChoice <= courses.size()){
                 int index = userChoice - 1;
                 listStudents(sectionName, courses.at(index));
+                utilsAdmin.delayAnimation(200);
             }
             else {
                 cout << "Invalid number. Try again" << "\n";
@@ -227,12 +228,49 @@ int Admin::listStudents(string sectionName, string courseName)
             }
         }
 
-        int userChoice = utilsAdmin.returnButton(choice);
-        if (userChoice == 0){
+        while (true) {
+            cout << "[0] Back" << endl;
+            cout << "Enter your choice: ";
+            cin >> choice;
+
+            if (cin.fail()){
+                cout << "Not an integer. Try again." << endl;
+                cin.clear();
+                cin.ignore(256,'\n');
+                continue;
+            } else 
+                break;
+        }
+
+        if (choice == 0){
             return 0; break;
         } else {
-            if (userChoice > 0){
-                int index = userChoice - 1;
+            if (choice > 0){
+                int index = choice - 1;
+                string semesterChoice; int semesterNumber;
+
+                cout << "Enter semester [m/f]: ";
+                cin >> semesterChoice;
+                if (semesterChoice == "m") semesterNumber = 3;
+                else if (semesterChoice == "f") semesterNumber = 4;
+                else {
+                    cout << "Invalid value. Try again" << "\n";
+                    continue;
+                }
+
+                double grade;
+                cout << "Enter grade: ";
+                cin >> grade;
+
+                if (cin.fail()){
+                    cout << "Invalid value. Try again" << endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    continue;
+                }
+                
+                utilsAdmin.modifyStudentGrades(names.at(index), courseName, semesterNumber, grade);
+                utilsAdmin.delayAnimation(150);
             }
             else {
                 cout << "Invalid number. Try again" << "\n";
@@ -253,5 +291,3 @@ int Admin::manageTeacher()
     
     return 1;
 }
-
-

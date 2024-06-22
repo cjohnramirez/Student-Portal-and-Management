@@ -19,6 +19,8 @@ public:
     void studentGrades(string username);
     void studentInformation(string username);
     void studentsPerSection(string sectionName, string courseName, string teacherName);
+    void modifyStudentGrades(string studentName, string courseName, int index, double grade);
+    void copyCSVFile(const string& sourceFile, const string& tempFile);
 
     Utils(const Utils&) = delete;
     Utils& operator=(const Utils&) = delete;

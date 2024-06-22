@@ -34,7 +34,7 @@ int main() {
         else
             checkCredentials = true;
 
-        utilsMain.delayAnimation(200);
+        utilsMain.delayAnimation(250);
 
         string accountType = user.getAccountType();
         string name = user.getName();

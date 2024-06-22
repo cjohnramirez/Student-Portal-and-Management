@@ -148,10 +148,106 @@ void Utils::studentsPerSection(string sectionName, string courseName, string tea
 }
 
 //FOR ADMIN CLASS
+void Utils::modifyStudentGrades(string studentName, string courseName, int index, double grade) {
+    ifstream students("students.csv");
 
+    int countLines = 0;
+    vector<string> row;
+    string line, word;
+    string newline;
+
+    bool startFind, findCourse = false;
+
+    while (getline(students, line))
+    {
+        countLines++;
+        row.clear();
+        std::stringstream s(line);
+
+        while (getline(s, word, ',')){
+            row.push_back(word);
+        }
+            
+        if (row[0] == "#"){
+            startFind = true;
+            continue;
+        }
+
+        if (startFind && row[0] == studentName){
+            findCourse = true;
+            continue;
+        }
+
+        if (findCourse && row[0] == courseName){
+            std::ostringstream ss;
+            ss << grade;
+            std::string s(ss.str());
+
+            row[index] = s;
+        
+            std::stringstream updatedLine;
+            for (int i = 0; i < row.size(); ++i) {
+                if (i > 0) updatedLine << ",";
+                updatedLine << row[i];
+            }
+            newline = updatedLine.str();
+
+            break;
+        }
+    }
+
+    copyCSVFile("students.csv", "temporary.csv");
+    students.close();
+
+    ifstream tempFile("temporary.csv");
+    ofstream editFile("students.csv", ios::trunc);
+    
+    string readline;
+    int currentRow = 0;
+    while (getline(tempFile, readline, '\n')) {
+        ++currentRow;
+        if (currentRow == countLines) {
+            editFile << newline << '\n';
+        } else {
+            editFile << readline << '\n';
+        } 
+    }
+    
+    ofstream deleteTempFile("temporary.csv");
+
+    students.close();
+    editFile.close();
+
+    returnButton(choice);
+    if (choice == 0) return;
+}
+
+void Utils::copyCSVFile(const string& sourceFile, const string& tempFile) {
+    ifstream infile(sourceFile);
+    ofstream outfile(tempFile);
+
+    if (!infile) {
+        cerr << "Error: Cannot open input file." << endl;
+        return;
+    }
+    if (!outfile) {
+        cerr << "Error: Cannot create temporary file." << endl;
+        return;
+    }
+
+    string line;
+    
+    // Read each line from the source CSV file and write to the temporary file
+    while (getline(infile, line)) {
+        outfile << line << endl;
+    }
+
+    infile.close();
+    outfile.close();
+}
 
 //GLOBAL FUNCTIONS
-int Utils::returnButton(int choice){ //button to return at somewhere
+int Utils::returnButton(int choice) { //button to return at somewhere
     while (true) {
         cout << "[0] Back" << endl;
         cout << "Enter your choice: ";
