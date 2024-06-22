@@ -166,15 +166,15 @@ int Utils::returnButton(int choice){ //button to return at somewhere
             break;
     }
 
-    delayAnimation(0.15);
+    delayAnimation(250);
     return choice;
 }
 
 void Utils::logout() //button to return at main menu
 {
-    delayAnimation(0.25);
+    delayAnimation(250);
     cout << "Redirecting to login page..." << endl;
-    delayAnimation(0.25);
+    delayAnimation(250);
 }
 
 void Utils::delayAnimation(double seconds)

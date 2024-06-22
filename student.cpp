@@ -10,7 +10,7 @@ Login student;
 bool Student::studentMenu(string name) //main menu of student class
 {
     this->name = name;
-    utilsStudent.delayAnimation(0.25);
+    utilsStudent.delayAnimation(200);
 
     int choice;
     bool runChoice = true;
@@ -24,7 +24,7 @@ bool Student::studentMenu(string name) //main menu of student class
         cout << "Enter your choice: ";
         cin >> choice;
 
-        utilsStudent.delayAnimation(0.25);
+        utilsStudent.delayAnimation(200);
         switch(choice){
             case 1: if (viewInformation() == 0) continue;
                 break;

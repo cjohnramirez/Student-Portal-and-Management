@@ -2,13 +2,13 @@
 #include "utils.h"
 #include "admin.h"
 #include <iostream>
-using std::cout, std::cin, std::endl;
+using namespace std;
 
 Utils& utilsAdmin = Utils::getInstance();
 
 bool Admin::adminMenu(string name)
 {
-    utilsAdmin.delayAnimation(0.25);
+    utilsAdmin.delayAnimation(200);
 
     int choice;
     bool runChoice = true;
@@ -22,7 +22,7 @@ bool Admin::adminMenu(string name)
         cout << "Enter your choice: ";
         cin >> choice;
 
-        utilsAdmin.delayAnimation(0.25);
+        utilsAdmin.delayAnimation(250);
         switch (choice)
         {
             case 1: if (manageStudent() == 0) continue;
@@ -186,6 +186,10 @@ int Admin::listStudents(string sectionName, string courseName)
         bool startFind, findCourse = false;
         string studentName;
 
+        vector<string> names;
+        vector<string> midterm;
+        vector<string> final;
+
         while (getline(students, line))
         {
             row.clear();
@@ -205,6 +209,7 @@ int Admin::listStudents(string sectionName, string courseName)
                     countItem++;
 
                     cout << setw(15) << countItem;
+                    names.push_back(studentName);
                     cout << setw(20) << studentName;
                     findCourse = true;
                     continue;
@@ -213,6 +218,9 @@ int Admin::listStudents(string sectionName, string courseName)
 
             if (findCourse){
                 if (courseName == row[0]){
+                    midterm.push_back(row[3]);
+                    final.push_back(row[4]);
+
                     cout << setw(15) << row[3];
                     cout << setw(15) << row[4] << "\n";
                 }

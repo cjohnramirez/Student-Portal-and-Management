@@ -24,12 +24,12 @@ int Login::startMenu() //main menu of program
             cin.clear();
             cin.ignore(256,'\n');
             
-            utilsLogin.delayAnimation(0.40);
+            utilsLogin.delayAnimation(250);
             continue;
         }
 
         if (choice == 0) {
-            utilsLogin.delayAnimation(0.25);
+            utilsLogin.delayAnimation(250);
             return 1;
         }
         else if (choice == 1)
