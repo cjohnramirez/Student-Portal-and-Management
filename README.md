@@ -33,4 +33,6 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 - New Feature: Read Student Information
 - Modifiable delay animation
 - Added Tabulate header file for customization
+
+(Alpha 1.1)
 - New Feature: Modify Grade Per Section, Course, and Student
