@@ -7,6 +7,9 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 - Read Student Information
 
 ### Admin
+- Edit Students' Grades
+- Edit Students' Information
+
 ### Teacher
 - Read Grades from Subjects
 
