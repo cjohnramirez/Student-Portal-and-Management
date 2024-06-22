@@ -10,8 +10,8 @@
 #include <iostream>
 using namespace std;
 
-//these are for utilities and tools in the program
-void Utils::studentInfo(string username) { //student class: reads student record
+//FOR STUDENT CLASS
+void Utils::studentGrades(string username) { 
     ifstream students("students.csv");
 
     cout << left;
@@ -55,6 +55,47 @@ void Utils::studentInfo(string username) { //student class: reads student record
     students.close();
 }
 
+void Utils::studentInformation(string username){
+        ifstream students("students.csv");
+
+    cout << left;
+    cout << setw(20) << "Label:" << setw(30) << "Information:" << "\n\n";
+
+    vector<string> row;
+    string line, word;
+
+    while (getline(students, line))
+    {
+        row.clear();
+        std::stringstream s(line);
+
+        while (getline(s, word, ',')){
+            row.push_back(word); 
+        }
+
+        if (row.empty()) continue;
+
+        bool isFound;
+        if (row[0] == username){
+            isFound = true;
+            if (isFound && row[0] != "#"){
+                cout << setw(20) << "Name" << setw(30) << row[0] << "\n";
+                cout << setw(20) << "Course" << setw(30) << row[5] << "\n"; 
+                cout << setw(20) << "Section" << setw(30) << row[2] << "\n";
+                cout << setw(20) << "Email" << setw(30) << row[3] << "\n"; 
+                cout << setw(20) << "Phone Number" << setw(30) << row[4] << "\n";
+                cout << setw(20) << "School ID" << setw(30) << row[6] << "\n";
+            }
+        }
+
+        else if (isFound && row[0] == "#") break;
+    }
+
+
+    students.close();
+}
+
+//FOR TEACHER CLASS
 void Utils::studentsPerSection(string sectionName, string courseName, string teacherName) //teacher class: reads record of students per section 
 {
     ifstream students("students.csv");
@@ -64,6 +105,7 @@ void Utils::studentsPerSection(string sectionName, string courseName, string tea
     cout << setw(15) << "Midterm";
     cout << setw(15) << "Final" << "\n";
 
+    int countItems = 0;
     vector<string> row;
     string line, word;
 
@@ -105,6 +147,10 @@ void Utils::studentsPerSection(string sectionName, string courseName, string tea
     if (choice == 0) return;
 }
 
+//FOR ADMIN CLASS
+
+
+//GLOBAL FUNCTIONS
 int Utils::returnButton(int choice){ //button to return at somewhere
     while (true) {
         cout << "[0] Back" << endl;
@@ -120,21 +166,23 @@ int Utils::returnButton(int choice){ //button to return at somewhere
             break;
     }
 
-    delayAnimation();
+    delayAnimation(0.15);
     return choice;
 }
 
 void Utils::logout() //button to return at main menu
 {
-    delayAnimation();
+    delayAnimation(0.25);
     cout << "Redirecting to login page..." << endl;
-    delayAnimation();
+    delayAnimation(0.25);
 }
 
-void Utils::delayAnimation()
+void Utils::delayAnimation(double seconds)
 {
     using namespace std::literals;
-    std::this_thread::sleep_for(0.25s);
+    auto duration = std::chrono::duration<double>(seconds);
+
+    std::this_thread::sleep_for(duration);
 
     cout << u8"\033[2J\033[1;1H"; 
 }

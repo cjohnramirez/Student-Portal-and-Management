@@ -1,3 +1,4 @@
+#include "tabulate.hpp"
 #include <iostream>
 #include <windows.h>
 #include "utils.cpp"
@@ -34,7 +35,7 @@ int main() {
         else
             checkCredentials = true;
 
-        utilsMain.delayAnimation();
+        utilsMain.delayAnimation(0.25);
 
         string accountType = user.getAccountType();
         string name = user.getName();

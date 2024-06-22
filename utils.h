@@ -8,16 +8,16 @@ class Utils
 public:
     static Utils& getInstance()
     {
-        if (!instance){
+        if (!instance)
             instance = new Utils();
-        }
         return *instance;
     }
 
     int returnButton(int choice);
     void logout();
-    void delayAnimation();
-    void studentInfo(string username);
+    void delayAnimation(double seconds);
+    void studentGrades(string username);
+    void studentInformation(string username);
     void studentsPerSection(string sectionName, string courseName, string teacherName);
 
     Utils(const Utils&) = delete;

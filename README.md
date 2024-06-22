@@ -4,6 +4,7 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 ## Features
 ### Student
 - Read Grades from Record
+- Read Student Information
 
 ### Admin
 ### Teacher
@@ -19,8 +20,6 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 
 (Beta 2.0)
 - Defined admin and teacher class, and their menus
-
-(Beta 2.1)
 - Applied Simpleton design in Utils class
 - Finished all classes
 - Reduced redundancy in major parts of the program
@@ -29,3 +28,7 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 - Ability to see teacher's courses and sections, as well as individual grades
 - Major fixes in several classes
 - Added person class (implementation to be followed)
+
+(Alpha 1.0)
+- New Feature: Read Student Information
+- Modifiable delay animation

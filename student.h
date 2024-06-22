@@ -8,7 +8,7 @@ class Student
 {
 public:
     bool studentMenu(string name); //finished
-    int viewCOR();
+    int viewInformation();
     int viewGrade();
 private:
     int choice;

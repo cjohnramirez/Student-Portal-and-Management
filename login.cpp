@@ -19,18 +19,22 @@ int Login::startMenu() //main menu of program
         int choice;
         cin >> choice;     
 
+        if (choice < 0 || choice > 1 || cin.fail()) {
+            cout << "Invalid input. Try again."; 
+            cin.clear();
+            cin.ignore(256,'\n');
+            
+            utilsLogin.delayAnimation(0.40);
+            continue;
+        }
+
         if (choice == 0) {
-            utilsLogin.delayAnimation();
+            utilsLogin.delayAnimation(0.25);
             return 1;
         }
         else if (choice == 1)
         {
             break;
-        }
-        else {
-            cout << "Invalid input"; 
-            utilsLogin.delayAnimation();
-            continue;
         }
     }
 

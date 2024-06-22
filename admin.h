@@ -8,6 +8,10 @@ class Admin {
 public:
     bool adminMenu(string name);
     int manageStudent();
+    int listSections();
+    int listCourses(string sectionName);
+    int listStudents(string sectionName, string courseName);
+
     int manageTeacher();
 private:
     int choice;

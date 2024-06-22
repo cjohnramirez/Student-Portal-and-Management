@@ -10,23 +10,23 @@ Login student;
 bool Student::studentMenu(string name) //main menu of student class
 {
     this->name = name;
-    utilsStudent.delayAnimation();
+    utilsStudent.delayAnimation(0.25);
 
     int choice;
     bool runChoice = true;
     while (runChoice)
     {
         cout << "Welcome, " << name << "!" << endl;
-        cout << "[1] View COR" << endl;
-        cout << "[2] View Grade" << endl;
+        cout << "[1] View Information" << endl;
+        cout << "[2] View Grades" << endl;
         cout << "[3] Logout" << endl;
 
         cout << "Enter your choice: ";
         cin >> choice;
 
-        utilsStudent.delayAnimation();
+        utilsStudent.delayAnimation(0.25);
         switch(choice){
-            case 1: if (viewCOR() == 0) continue;
+            case 1: if (viewInformation() == 0) continue;
                 break;
             case 2: if (viewGrade() == 0) continue;
                 break;
@@ -40,9 +40,11 @@ bool Student::studentMenu(string name) //main menu of student class
     return false;
 }
 
-int Student::viewCOR() //sub-menu, views COR in a file
+int Student::viewInformation() //sub-menu, views COR in a file
 {
-    cout << "COR" << endl;
+    cout << "View Information" << endl;
+
+    utilsStudent.studentInformation(name);
 
     utilsStudent.returnButton(choice);
     if (choice == 0) return 0;
@@ -53,7 +55,7 @@ int Student::viewCOR() //sub-menu, views COR in a file
 int Student::viewGrade() //sub-menu, views grade in a file
 {
     cout << "Grades" << endl;
-    utilsStudent.studentInfo(name);
+    utilsStudent.studentGrades(name);
 
     utilsStudent.returnButton(choice);
     if (choice == 0) return 0;
