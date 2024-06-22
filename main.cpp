@@ -1,11 +1,10 @@
 #include "tabulate.hpp"
-#include <iostream>
-#include <windows.h>
 #include "utils.cpp"
 #include "login.cpp"
 #include "student.cpp"
 #include "admin.cpp"
 #include "teacher.cpp"
+#include <iostream>
 using namespace std;
 
 Utils* Utils::instance = nullptr; //Singleton design class

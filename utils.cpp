@@ -179,10 +179,6 @@ void Utils::logout() //button to return at main menu
 
 void Utils::delayAnimation(double seconds)
 {
-    using namespace std::literals;
-    auto duration = std::chrono::duration<double>(seconds);
-
-    std::this_thread::sleep_for(duration);
-
-    cout << u8"\033[2J\033[1;1H"; 
+    Sleep(seconds);
+    system("cls");
 }

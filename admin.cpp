@@ -179,13 +179,13 @@ int Admin::listStudents(string sectionName, string courseName)
         cout << setw(15) << "Midterm";
         cout << setw(15) << "Final" << "\n";
 
+        int countItem = 0;
         vector<string> row;
         string line, word;
 
         bool startFind, findCourse = false;
         string studentName;
 
-        
         while (getline(students, line))
         {
             row.clear();
@@ -202,6 +202,9 @@ int Admin::listStudents(string sectionName, string courseName)
             if (startFind){
                 studentName = row[0];
                 if (sectionName == row[2]){
+                    countItem++;
+
+                    cout << setw(15) << countItem;
                     cout << setw(20) << studentName;
                     findCourse = true;
                     continue;
