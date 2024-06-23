@@ -7,14 +7,12 @@ using std::string;
 class Admin {
 public:
     bool adminMenu(string name);
-    int manageStudent();
-    int listSections();
-    int listCourses(string sectionName);
-    int listStudents(string sectionName, string courseName);
-
-    int manageTeacher();
+    int manageStudentGrades(); 
+    int manageStudentInformation();
+    int addStudent();
 private:
     int choice;
+    int shift;
 };
 
 #endif

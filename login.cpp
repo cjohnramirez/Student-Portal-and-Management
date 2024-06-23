@@ -75,18 +75,15 @@ int Login::startMenu() //main menu of program
             cin.clear();
             cin.ignore(256,'\n');
             
-            utilsLogin.delayAnimation(0.40);
+            utilsLogin.delayAnimation(500);
             continue;
         }
 
         if (choice == 0) {
-            utilsLogin.delayAnimation(0.25);
+            utilsLogin.delayAnimation(10);
             return 1;
         }
-        else if (choice == 1)
-        {
-            break;
-        }
+        else if (choice == 1) break;
     }
 
     return 0;     
@@ -121,8 +118,8 @@ string Login::checkCredentials(const string& username, const string& userpasswor
 
     if (isFound)
         return "Login successful!";
-    else 
-        return "Invalid name or username. Please try again.";
+    
+    return "Invalid name or username. Please try again.";
 }
 
 string Login::getName() const {

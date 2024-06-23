@@ -1,24 +1,21 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <string>
+#include "readCSV.cpp"
 using std::string;
 
-class Utils
+class Utils : public ReadCSV
 {
 public:
     static Utils& getInstance()
     {
-        if (!instance)
-            instance = new Utils();
+        if (!instance) instance = new Utils();
         return *instance;
     }
 
-    int returnButton(int choice);
+    int returnButton(int choice) override;
     void logout();
-    void delayAnimation(double seconds);
-    void studentGrades(string username);
-    void studentInformation(string username);
-    void studentsPerSection(string sectionName, string courseName, string teacherName);
+    void delayAnimation(double seconds) override;
 
     Utils(const Utils&) = delete;
     Utils& operator=(const Utils&) = delete;

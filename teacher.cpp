@@ -13,7 +13,7 @@ Utils& utilsTeacher = Utils::getInstance();
 bool Teacher::teacherMenu(string name)
 {
     this->name = name;
-    utilsTeacher.delayAnimation(0.25);
+    utilsTeacher.delayAnimation(200);
 
     while (true)
     {
@@ -24,7 +24,7 @@ bool Teacher::teacherMenu(string name)
         cout << "Enter your choice: ";
         cin >> choice;
 
-        utilsTeacher.delayAnimation(0.25);
+        utilsTeacher.delayAnimation(200);
         switch (choice)
         {
             case 1: if (viewStudents() == 0) continue;
@@ -33,7 +33,7 @@ bool Teacher::teacherMenu(string name)
                 return true;
             default:
                 cout << "Invalid choice, try again" << endl;
-                utilsTeacher.delayAnimation(0.25); 
+                utilsTeacher.delayAnimation(250); 
                 continue;
         }
     }

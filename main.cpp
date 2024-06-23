@@ -7,11 +7,10 @@
 #include <iostream>
 using namespace std;
 
-Utils* Utils::instance = nullptr; //Singleton design class
+Utils* Utils::instance = nullptr; 
 
-//main part of the program
 int main() {
-    Utils& utilsMain = Utils::getInstance();
+    Utils& utilsMain = Utils::getInstance(); 
 
     Login user;
     string username, password;
@@ -34,7 +33,7 @@ int main() {
         else
             checkCredentials = true;
 
-        utilsMain.delayAnimation(0.25);
+        utilsMain.delayAnimation(250);
 
         string accountType = user.getAccountType();
         string name = user.getName();
