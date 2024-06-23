@@ -9,6 +9,7 @@ public:
     void studentInformation(string username);
     void studentsPerSection(string sectionName, string courseName, string teacherName);
 
+    int teacherCourses(string name);
     int listSections(int shift);
     int listCourses(string sectionName);
     int listStudents(string sectionName, string courseName);
@@ -20,7 +21,7 @@ public:
     void modifyAccount(string name, string newName);
 
     int listInformationNeeded(); //lists all needed information
-    void createStudent(const string& row); //creates student (and account) based on that information
+    void createAccount(string username, string password, string name); //creates student (and account) based on that information
 
     void copyCSVFile(const string& sourceFile, const string& tempFile);
     virtual int returnButton(int choice) = 0;

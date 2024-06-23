@@ -13,16 +13,22 @@ Utils& utilsTeacher = Utils::getInstance();
 bool Teacher::teacherMenu(string name)
 {
     this->name = name;
-    utilsTeacher.delayAnimation(200);
 
     while (true)
     {
-        cout << "Welcome, " << name << "!" << endl;
-        cout << "[1] View Students" << endl;
-        cout << "[2] Logout" << endl;
+        cout << "\033[94m" << R"(  _____ _____    _    ____ _   _ _____ ____  
+ |_   _| ____|  / \  / ___| | | | ____|  _ \
+   | | |  _|   / _ \| |   | |_| |  _| | |_) |
+   | | | |___ / ___ \ |___|  _  | |___|  _ < 
+   |_| |_____/_/   \_\____|_| |_|_____|_| \_\
+                                             )" << "\033[0m" << endl;
+        cout << "Welcome, " << name << "!\n" << endl;
+        cout << "\033[32m[1]\033[0m View Students" << endl;
+        cout << "\033[31m[2]\033[0m Logout" << endl;
 
-        cout << "Enter your choice: ";
+        cout << "Enter your choice: \033[32m";
         cin >> choice;
+        cout << "\033[0m";
 
         utilsTeacher.delayAnimation(200);
         switch (choice)
@@ -43,82 +49,8 @@ bool Teacher::teacherMenu(string name)
 
 int Teacher::viewStudents()
 {
-    cout << "View Students" << endl;
-    if (teacherCourses() == 0) return 0;
+    if (utilsTeacher.teacherCourses(name) == 0) return 0;
 
     return 1;
-}
-
-int Teacher::teacherCourses()
-{
-    while (true){
-        ifstream students("teachers.csv");
-
-        cout << left;
-        cout << setw(10) << "Number";
-        cout << setw(10) << "Course";
-        cout << setw(10) << "Section" << "\n";
-
-        vector<string> row;
-        string line, word;
-
-        int countItems = 0;
-        vector<string> courses;
-        vector<string> sections;
-        bool checkname, printSection = false;
-
-        while (getline(students, line))
-        {
-            row.clear();
-            std::stringstream s(line);
-
-            while (getline(s, word, ','))
-                row.push_back(word); 
-
-            if (row.empty()) continue;
-
-            if (row[0] == "#" && printSection) break;
-
-            if (row[0] == "#"){
-                checkname = true;
-                continue;
-            }
-
-            if (row[0] == name && checkname){
-                printSection = true;
-                continue;
-            }
-
-            if (printSection){
-                countItems++;
-
-                cout << setw(10) << countItems;
-                cout << setw(10) << row[0];
-                cout << setw(10) << row[1] << "\n";
-
-                courses.push_back(row[0]);
-                sections.push_back(row[1]);
-                continue;
-            }
-        }
-
-        students.close();
-
-        int userChoice = utilsTeacher.returnButton(choice);
-        if (userChoice == 0){
-            return 0; break;
-        } else {
-            if (userChoice > 0 && userChoice <= sections.size() && userChoice <= courses.size()){
-                int index = userChoice - 1;
-                utilsTeacher.studentsPerSection(sections.at(index), courses.at(index), name);
-            }
-            else {
-                cout << "Invalid number. Try again" << "\n";
-                continue;
-            }
-        }
-    }
-
-    return 0;
 }
 

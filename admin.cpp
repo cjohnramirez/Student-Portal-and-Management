@@ -13,22 +13,25 @@ Utils& utilsAdmin = Utils::getInstance();
 
 bool Admin::adminMenu(string name)
 {
-    utilsAdmin.delayAnimation(200);
-
     int choice;
     bool runChoice = true;
     while (runChoice)
     {
-        cout << "Welcome, " << name << "!" << endl;
-        cout << "[1] Manage Student Grades" << endl; //done
-        cout << "[2] Manage Student Information" << endl;
-        cout << "[3] Add Student" << endl;
-        cout << "[4] Delete Student" << endl;
-        cout << "[n/a] Add or Delete Teacher" << endl;
-        cout << "[5] Logout" << endl;
+        cout << "\033[94m" << R"(     _    ____  __  __ ___ _   _ 
+    / \  |  _ \|  \/  |_ _| \ | |
+   / _ \ | | | | |\/| || ||  \| |
+  / ___ \| |_| | |  | || || |\  |
+ /_/   \_\____/|_|  |_|___|_| \_|
+                                 )" << "\033[0m" << endl;
+        cout << "Welcome, " << name << "!\n" << endl;
+        cout << "\033[32m[1]\033[0m Manage Student Grades" << endl; //done
+        cout << "\033[32m[2]\033[0m Manage Student Information" << endl;
+        cout << "\033[32m[3]\033[0m Add Student" << endl;
+        cout << "\033[31m[4]\033[0m Logout" << endl;
 
-        cout << "Enter your choice: ";
+        cout << "Enter your choice: \033[32m";
         cin >> choice;
+        cout << "\033[0m";
 
         utilsAdmin.delayAnimation(250);
         switch (choice)
@@ -39,12 +42,12 @@ bool Admin::adminMenu(string name)
                 break;
             case 3: if (addStudent() == 0) continue;
                 break;
-            case 4: 
-                break;
-            case 5: utilsAdmin.logout();
+            case 4: utilsAdmin.logout(); 
                 return true;
             default:
-                cout << "Invalid choice, try again" << endl;
+                cout << "Invalid choice, try again" << endl; 
+                utilsAdmin.delayAnimation(250); 
+                continue;
         }
     }
     
@@ -74,10 +77,8 @@ int Admin::manageStudentInformation()
 
 int Admin::addStudent()
 {
-    cout << "Add Student" << endl;
+    utilsAdmin.listInformationNeeded();
+    utilsAdmin.delayAnimation(250);
     
-    utilsAdmin.returnButton(choice);
-    if (choice == 0) return 0;
-    
-    return 1;
+    return 0;
 }

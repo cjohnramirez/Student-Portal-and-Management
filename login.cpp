@@ -1,5 +1,6 @@
 #include "login.h"
 #include "utils.h"
+#include "hashes.cpp"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -11,16 +12,23 @@ Utils& utilsLogin = Utils::getInstance();
 int Login::startMenu() //main menu of program
 {
     while (true){
-        cout << "Welcome!" << endl;
-        cout << "[0] Exit Program" << endl;     
-        cout << "[1] Continue Program" << endl;
+        std::cout << "\033[94m" << R"(  ____  ____       __  __ 
+ / ___||  _ \ __ _|  \/  |
+ \___ \| |_) / _` | |\/| |
+  ___) |  __/ (_| | |  | |
+ |____/|_|   \__,_|_|  |_|
+                          )" << "\033[0m" << std::endl;
+        cout << "Student Portal & Management\n" << endl;
+        cout << "\033[31m" << "[0]\033[0m Exit Program" << endl;     
+        cout << "\033[32m" << "[1]\033[0m Continue Program" << endl;
 
-        cout << "Enter choice: ";
+        cout << "Enter choice: \033[32m";
         int choice;
-        cin >> choice;     
+        cin >> choice;  
+        cout << "\033[0m";
 
         if (choice < 0 || choice > 1 || cin.fail()) {
-            cout << "Invalid input. Try again."; 
+            cout << "[Invalid input. Try again.]"; 
             cin.clear();
             cin.ignore(256,'\n');
             
@@ -57,7 +65,9 @@ string Login::checkCredentials(const string& username, const string& userpasswor
             row.push_back(word); 
         }
 
-        if (row[1] == username && row[2] == userpassword){
+        Hashes hash2;
+
+        if ((row[1] == username && row[2] == userpassword) || (row[1] == username && row[2] == hash2.pretendre_md5(userpassword))){
             this->accountType = row[0];
             this->name = row[3];
             isFound = true;
@@ -66,9 +76,9 @@ string Login::checkCredentials(const string& username, const string& userpasswor
     }
 
     if (isFound)
-        return "Login successful!";
+        return "\033[32m\n[Login successful!]\033[0m";
     
-    return "Invalid name or username. Please try again.";
+    return "\033[31m\n[Invalid name or username. Please try again.]\033[0m";
 }
 
 string Login::getName() const {

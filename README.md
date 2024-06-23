@@ -9,6 +9,7 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 ### Admin
 - Edit Students' Grades
 - Edit Students' Information
+- Add Student Account and Information
 
 ### Teacher
 - Read Grades from Subjects
@@ -44,6 +45,11 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 
 (Alpha 2.0)
 - Moved most functions that modify CSV to one file
+
+(Alpha 3.0)
+- Final Version: Revamped UI
+- New Feature: Ability to Create Student Account
+- New Feature: Hashes for Security
 
 ## Classes
 ### Login Class
