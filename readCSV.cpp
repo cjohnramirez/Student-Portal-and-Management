@@ -723,7 +723,7 @@ void ReadCSV::modifyAccount(string name, string newName){
 }
 
 int ReadCSV::listInformationNeeded(){
-
+    return 0;
 }
 
 void ReadCSV::createStudent(const string& row){
