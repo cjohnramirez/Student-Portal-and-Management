@@ -1,17 +1,23 @@
 # Student Portal and Management 
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/48093d68-8c3f-46f1-a10d-c6737e68a129)
 A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Science
 
 ## Features
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/69e694f1-29f8-4511-9964-5823b45c0b16)
+- Looping Feature: Ability to back and logout anywhere from the program
+- Security Measures: Protects passwords by using hashes
+- Revamped, Modern CLI
 ### Student
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/fe7feac6-996c-466d-bebc-78347cd96578)
 - Read Grades from Record
 - Read Student Information
-
 ### Admin
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/79e4e011-961e-47b3-a783-bedff64d0be8)
 - Edit Students' Grades
 - Edit Students' Information
 - Add Student Account and Information
-
 ### Teacher
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/4120fafc-ea39-4899-a782-41e4384d5bd7)
 - Read Grades from Subjects
 
 ## Updates
