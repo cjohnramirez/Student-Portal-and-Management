@@ -1,6 +1,6 @@
 # Student Portal and Management 
 ![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/48093d68-8c3f-46f1-a10d-c6737e68a129)
-A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Science
+- A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Science
 
 ## Features
 ![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/69e694f1-29f8-4511-9964-5823b45c0b16)
