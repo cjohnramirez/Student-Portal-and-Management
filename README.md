@@ -14,7 +14,6 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 - Read Grades from Subjects
 
 ## Updates
-
 (Beta 1.0)
 - Adds back button, menus, and logout features
 - Add four classes: Admin, Login, Student, and Teacher class
@@ -42,3 +41,20 @@ A Computer Programming 2 Final Project in USTP-CDO's Department of Computer Scie
 
 (Alpha 1.2)
 - New Feature: Modify Student Information
+
+(Alpha 2.0)
+- Moved most functions that modify CSV to one file
+
+## Classes
+# Login Class
+Facilitates the start menus and logging in credentials, as well as logout
+# Admin Class
+The administrator of the program. Has the ability to modify grades, information, accounts, and add/drop students, subjects, and teachers
+# Teacher Class
+Ability to see grades, and in the future, add assignments and attendance
+# Student Class
+Ability to see one's grades, information, and in the future, assignments and attendance
+# ReadCSV Class
+The largest class, facilitates all read and write functions in CSV files. Used by most classes
+# Utils Class
+Inherits ReadCSV Class and adds functionalities like delayAnimation, logout, and return button

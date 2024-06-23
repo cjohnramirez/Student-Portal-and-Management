@@ -7,9 +7,8 @@
 #include <iostream>
 using namespace std;
 
-Utils* Utils::instance = nullptr; //Singleton design class
+Utils* Utils::instance = nullptr; 
 
-//main part of the program
 int main() {
     Utils& utilsMain = Utils::getInstance();
 

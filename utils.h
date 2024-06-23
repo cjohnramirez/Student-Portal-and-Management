@@ -1,9 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <string>
+#include "readCSV.cpp"
 using std::string;
 
-class Utils
+class Utils : public ReadCSV
 {
 public:
     static Utils& getInstance()
@@ -12,17 +13,9 @@ public:
         return *instance;
     }
 
-    void studentGrades(string username);
-    void studentInformation(string username);
-    void studentsPerSection(string sectionName, string courseName, string teacherName);
-    void modifyStudentGrades(string studentName, string courseName, int index, double grade);
-    void modifyStudentInformation(string studentName, string toReplace, int index);
-    void modifyAccount(string name, string newName);
-
-    void copyCSVFile(const string& sourceFile, const string& tempFile);
-    int returnButton(int choice);
+    int returnButton(int choice) override;
     void logout();
-    void delayAnimation(double seconds);
+    void delayAnimation(double seconds) override;
 
     Utils(const Utils&) = delete;
     Utils& operator=(const Utils&) = delete;
