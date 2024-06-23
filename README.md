@@ -12,7 +12,7 @@
 - Read Grades from Record
 - Read Student Information
 ### Admin
-![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/79e4e011-961e-47b3-a783-bedff64d0be8)
+![image](https://github.com/cjohnramirez/Student-Portal-and-Management/assets/135854006/9742ed3a-395d-4b05-ba48-70afeafcd64c)
 - Edit Students' Grades
 - Edit Students' Information
 - Add Student Account and Information
