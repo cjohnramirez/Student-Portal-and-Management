@@ -10,7 +10,7 @@ using namespace std;
 Utils* Utils::instance = nullptr; 
 
 int main() {
-    Utils& utilsMain = Utils::getInstance();
+    Utils& utilsMain = Utils::getInstance(); 
 
     Login user;
     string username, password;

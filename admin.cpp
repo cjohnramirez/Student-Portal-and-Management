@@ -37,7 +37,7 @@ bool Admin::adminMenu(string name)
                 break;
             case 2: if (manageStudentInformation() == 0) continue;
                 break;
-            case 3: 
+            case 3: if (addStudent() == 0) continue;
                 break;
             case 4: 
                 break;
@@ -65,6 +65,16 @@ int Admin::manageStudentInformation()
     cout << "Manage Teacher" << endl;
     shift = 2;
     if (utilsAdmin.listSections(2) == 0) return 0;
+    
+    utilsAdmin.returnButton(choice);
+    if (choice == 0) return 0;
+    
+    return 1;
+}
+
+int Admin::addStudent()
+{
+    cout << "Add Student" << endl;
     
     utilsAdmin.returnButton(choice);
     if (choice == 0) return 0;

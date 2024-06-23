@@ -9,6 +9,7 @@ public:
     bool adminMenu(string name);
     int manageStudentGrades(); 
     int manageStudentInformation();
+    int addStudent();
 private:
     int choice;
     int shift;

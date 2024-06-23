@@ -10,7 +10,7 @@
 #include <iostream>
 using namespace std;
 
-//FOR STUDENT CLASS
+//STUDENT CLASS
 void ReadCSV::studentGrades(string username) { 
     ifstream students("students.csv");
 
@@ -55,6 +55,7 @@ void ReadCSV::studentGrades(string username) {
     students.close();
 }
 
+//STUDENT CLASS
 void ReadCSV::studentInformation(string username){
     ifstream students("students.csv");
 
@@ -95,7 +96,7 @@ void ReadCSV::studentInformation(string username){
     students.close();
 }
 
-//FOR TEACHER CLASS
+//TEACHER CLASS
 void ReadCSV::studentsPerSection(string sectionName, string courseName, string teacherName) //teacher class: reads record of students per section 
 {
     ifstream students("students.csv");
@@ -201,6 +202,7 @@ int ReadCSV::listSections(int shift){
     }
 }
 
+//ADMIN CLASS
 int ReadCSV::listCourses(string sectionName){
     cout << "Select course:" << endl;
 
@@ -260,8 +262,7 @@ int ReadCSV::listCourses(string sectionName){
             if (userChoice > 0 && userChoice <= courses.size()){
                 int index = userChoice - 1;
 
-                listStudents(sectionName, courses.at(index)); //edit student grade
-                //edit student
+                listStudents(sectionName, courses.at(index)); 
                 delayAnimation(200);
             }
             else {
@@ -274,6 +275,7 @@ int ReadCSV::listCourses(string sectionName){
     return 0;
 }
 
+//ADMIN CLASS
 int ReadCSV::listStudents(string sectionName, string courseName)
 {
     while (true){
@@ -354,7 +356,7 @@ int ReadCSV::listStudents(string sectionName, string courseName)
                 int index = choice - 1;
                 string semesterChoice; int semesterNumber;
 
-                cout << "\nEnter semester [m/f]: ";
+                cout << "Enter semester [m/f]: ";
                 cin >> semesterChoice;
                 if (semesterChoice == "m") semesterNumber = 3;
                 else if (semesterChoice == "f") semesterNumber = 4;
@@ -366,6 +368,7 @@ int ReadCSV::listStudents(string sectionName, string courseName)
                 double grade;
                 cout << "Enter grade: ";
                 cin >> grade;
+                "\n";
 
                 if (cin.fail()){
                     cout << "Invalid value. Try again" << endl;
@@ -375,6 +378,7 @@ int ReadCSV::listStudents(string sectionName, string courseName)
                 }
 
                 modifyStudentGrades(names.at(index), courseName, semesterNumber, grade);
+                delayAnimation(350);
             }
             else {
                 cout << "Invalid number. Try again" << "\n";
@@ -386,6 +390,7 @@ int ReadCSV::listStudents(string sectionName, string courseName)
     return 0;
 }
 
+//ADMIN CLASS
 void ReadCSV::modifyStudentGrades(string studentName, string courseName, int index, double grade) {
     ifstream students("students.csv");
 
@@ -456,11 +461,10 @@ void ReadCSV::modifyStudentGrades(string studentName, string courseName, int ind
     students.close();
     editFile.close();
 
-    returnButton(choice);
-    if (choice == 0) return;
+    return;
 }
 
-
+//ADMIN CLASS
 int ReadCSV::listStudents(string sectionName){
     while (true){
         ifstream students("students.csv");
@@ -529,118 +533,7 @@ int ReadCSV::listStudents(string sectionName){
     }
 }
 
-void ReadCSV::modifyStudentInformation(string studentName, string toReplace, int index) {
-    ifstream students("students.csv");
-
-    int countLines = 0;
-    vector<string> row;
-    string line, word;
-    string newline;
-
-    bool startFind, findInfo = false;
-
-    while (getline(students, line))
-    {
-        countLines++;
-        row.clear();
-        std::stringstream s(line);
-
-        while (getline(s, word, ',')) row.push_back(word);
-        
-        if (row[0] == "#"){
-            startFind = true;
-            continue;
-        }
-
-        if (startFind && row[1] == studentName){
-            if (index == 1) modifyAccount(studentName, toReplace);
-            row[index] = toReplace;
-        
-            std::stringstream updatedLine;
-            for (int i = 0; i < row.size(); ++i) {
-                if (i > 0) updatedLine << ",";
-                updatedLine << row[i];
-            }
-            newline = updatedLine.str();
-            break;
-        }
-    }
-
-    copyCSVFile("students.csv", "temporary.csv");
-    students.close();
-
-    ifstream tempFile("temporary.csv");
-    ofstream editFile("students.csv", ios::trunc);
-    
-    string readline;
-    int currentRow = 0;
-    while (getline(tempFile, readline, '\n')) {
-        ++currentRow;
-        if (currentRow == countLines) 
-            editFile << newline << '\n';
-        else 
-            editFile << readline << '\n';
-    }
-    
-    ofstream deleteTempFile("temporary.csv");
-
-    students.close();
-    editFile.close();
-}
-
-void ReadCSV::modifyAccount(string name, string newName){
-    ifstream students("accounts.csv");
-
-    int countLines = 0;
-    vector<string> row;
-    string line, word;
-    string newline;
-
-    while (getline(students, line))
-    {
-        countLines++;
-        row.clear();
-        std::stringstream s(line);
-
-        while (getline(s, word, ',')) row.push_back(word);
-
-        if (row[3] == name){
-            row[3] = newName;
-        
-            std::stringstream updatedLine;
-            for (int i = 0; i < row.size(); ++i) {
-                if (i > 0) updatedLine << ",";
-                updatedLine << row[i];
-            }
-            newline = updatedLine.str();
-            break;
-        }
-    }
-
-    copyCSVFile("accounts.csv", "temporary.csv");
-    students.close();
-
-    ifstream tempFile("temporary.csv");
-    ofstream editFile("accounts.csv", ios::trunc);
-    
-    string readline;
-    int currentRow = 0;
-    while (getline(tempFile, readline, '\n')) {
-        ++currentRow;
-        if (currentRow == countLines) 
-            editFile << newline << '\n';
-        else 
-            editFile << readline << '\n';
-    }
-    
-    ofstream deleteTempFile("temporary.csv");
-
-    students.close();
-    editFile.close();
-
-    return;
-}
-
+//ADMIN CLASS
 int ReadCSV::listStudentInformation(string studentName, string sectionName){
     
     while (true){
@@ -715,6 +608,129 @@ int ReadCSV::listStudentInformation(string studentName, string sectionName){
     }
 }
 
+//ADMIN CLASS
+void ReadCSV::modifyStudentInformation(string studentName, string toReplace, int index) {
+    ifstream students("students.csv");
+
+    int countLines = 0;
+    vector<string> row;
+    string line, word;
+    string newline;
+
+    bool startFind, findInfo = false;
+
+    while (getline(students, line))
+    {
+        countLines++;
+        row.clear();
+        std::stringstream s(line);
+
+        while (getline(s, word, ',')) row.push_back(word);
+        
+        if (row[0] == "#"){
+            startFind = true;
+            continue;
+        }
+
+        if (startFind && row[1] == studentName){
+            if (index == 1) modifyAccount(studentName, toReplace);
+            row[index] = toReplace;
+        
+            std::stringstream updatedLine;
+            for (int i = 0; i < row.size(); ++i) {
+                if (i > 0) updatedLine << ",";
+                updatedLine << row[i];
+            }
+            newline = updatedLine.str();
+            break;
+        }
+    }
+
+    copyCSVFile("students.csv", "temporary.csv");
+    students.close();
+
+    ifstream tempFile("temporary.csv");
+    ofstream editFile("students.csv", ios::trunc);
+    
+    string readline;
+    int currentRow = 0;
+    while (getline(tempFile, readline, '\n')) {
+        ++currentRow;
+        if (currentRow == countLines) 
+            editFile << newline << '\n';
+        else 
+            editFile << readline << '\n';
+    }
+    
+    ofstream deleteTempFile("temporary.csv");
+
+    students.close();
+    editFile.close();
+}
+
+//ADMIN CLASS
+void ReadCSV::modifyAccount(string name, string newName){
+    ifstream students("accounts.csv");
+
+    int countLines = 0;
+    vector<string> row;
+    string line, word;
+    string newline;
+
+    while (getline(students, line))
+    {
+        countLines++;
+        row.clear();
+        std::stringstream s(line);
+
+        while (getline(s, word, ',')) row.push_back(word);
+
+        if (row[3] == name){
+            row[3] = newName;
+        
+            std::stringstream updatedLine;
+            for (int i = 0; i < row.size(); ++i) {
+                if (i > 0) updatedLine << ",";
+                updatedLine << row[i];
+            }
+            newline = updatedLine.str();
+            break;
+        }
+    }
+
+    copyCSVFile("accounts.csv", "temporary.csv");
+    students.close();
+
+    ifstream tempFile("temporary.csv");
+    ofstream editFile("accounts.csv", ios::trunc);
+    
+    string readline;
+    int currentRow = 0;
+    while (getline(tempFile, readline, '\n')) {
+        ++currentRow;
+        if (currentRow == countLines) 
+            editFile << newline << '\n';
+        else 
+            editFile << readline << '\n';
+    }
+    
+    ofstream deleteTempFile("temporary.csv");
+
+    students.close();
+    editFile.close();
+
+    return;
+}
+
+int ReadCSV::listInformationNeeded(){
+
+}
+
+void ReadCSV::createStudent(const string& row){
+    
+}
+
+//ADMIN CLASS (OR TEACHER CLASS)
 void ReadCSV::copyCSVFile(const string& sourceFile, const string& tempFile) {
     ifstream infile(sourceFile);
     ofstream outfile(tempFile);
